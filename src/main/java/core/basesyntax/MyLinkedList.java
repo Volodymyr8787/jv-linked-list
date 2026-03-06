@@ -32,9 +32,9 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
     }
 
     private class Node<E> {
-        private item;
-        private <E>next;
-        private <E>prev;
+        private E item;
+        private Node<E> next;
+        private Node<E> prev;
 
         Node(Node<E> prev, E element, Node<E> next) {
             this.item = element;
@@ -142,7 +142,8 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
 
         while (current != null) {
 
-            if (current.item.equals(object)) {
+            if ((object == null && current.item == null)
+                    || (current.item != null && current.item.equals(object))) {
                 unlink(current);
                 return true;
             }
